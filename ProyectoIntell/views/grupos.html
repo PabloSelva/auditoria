@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupos</title>
+    <link rel="stylesheet" href="../css/viewG.css">
+</head>
+<body>
+    <header class="header">
+        <div class="containerOne">
+            <input type="file" id="logoInput" accept="image/*" style="display: none;">
+                <img src="#" alt="Logo" id="logoImage" style="width:50px;">
+        
+            <h1 id="companyName">Nombre de la empresa</h1>
+            <input type="color" id="colorPicker" style="display: none;">
+            </div>
+    <div class="user-menu">
+        <div class="user-icon">&#128100;</div>
+        <ul class="dropdown-menu">
+            <li><a href="#" id="customize">Personalizar</a></li>
+            <label for="logoInput" class="logo-label">Mi Logo</label>
+            <li><a href="../index.html">Salir</a></li>
+        </ul>
+    </div>  
+    </header>
+
+     <!-- Contenedor del modal -->
+     <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Agregar Espacio</h2>
+            <form id="spaceForm">
+                <label for="spaceName">Nombre del Espacio:</label>
+                <input type="text" id="spaceName" >
+                <button type="submit" id="addSpace">Agregar</button>
+                <button type="button" id="cancel">Cancelar</button>
+            </form>
+        </div>
+    </div>
+    <!--cajas contenedoras de los grupos-->
+    <a href="../views/asigTareas.html"><div id="cajas-container"></div></a>
+        <div class="add-button">
+            <button id="openModal" title="Agregar espacio">
+                <span>&#43;</span> <!-- para el boton con simbolo +  -->
+            </button>
+        </div>
+    </div>
+    
+    <main>
+        <section>
+            
+        </section>
+    </main>
+    <footer>
+        
+    </footer>
+     <!-- JavaScript para la funciones -->
+     <script>
+            //funcion del menu del ususario
+        document.addEventListener("DOMContentLoaded", function () {
+            const userIcon = document.querySelector(".user-icon");
+            const userMenu = document.querySelector(".dropdown-menu");
+            const customizeOption = document.getElementById("customize");
+            const colorPicker = document.getElementById("colorPicker");
+            const header = document.querySelector("header");
+            const companyName = localStorage.getItem("companyName");
+       
+            // Verifica si hay un nombre de empresa almacenado en localStorage
+            const storedCompanyName = localStorage.getItem("companyName");
+
+            // Verifica si el elemento con ID "companyName" existe
+            const companyNameElement = document.getElementById("companyName");
+
+            if (storedCompanyName && companyNameElement) {
+                // Actualiza el contenido de <h1> con el nombre de la empresa almacenado
+                companyNameElement.textContent = storedCompanyName;
+            }
+
+
+
+            //icono del menu del ususario
+            userIcon.addEventListener("click", function () {
+                if (userMenu.style.display === "block") {
+                    userMenu.style.display = "none";
+                } else {
+                    userMenu.style.display = "block";
+                }
+            });
+
+            // darle clicl fuera del menu del usuario para cerrarlo
+            document.addEventListener("click", function (e) {
+                if (!userMenu.contains(e.target) && e.target !== userIcon) {
+                    userMenu.style.display = "none";
+                }
+            });
+
+             // Mostrar el cuadro de diálogo de color cuando se hace clic en "Personalizar"
+            customizeOption.addEventListener("click", function () {
+                colorPicker.click();
+             });
+
+             // Cambiar el color de fondo del encabezado cuando se selecciona un color
+            colorPicker.addEventListener("input", function () {
+                const selectedColor = colorPicker.value;
+                header.style.backgroundColor = selectedColor;
+            });
+
+            ///////////js para cajas contenedoras////////
+            addSpaceBtn.addEventListener("click", function () {
+            const spaceName = spaceNameInput.value;
+
+            // Crear una nueva caja cuadrada
+            const newBox = document.createElement("div");
+            newBox.classList.add("caja");
+           // newBox.textContent = spaceName;
+
+           // Crear un párrafo para el nombre y agregarlo a la caja
+            const nameParagraph = document.createElement("p");
+            nameParagraph.textContent = spaceName;
+            newBox.appendChild(nameParagraph);
+
+            // Agregar la nueva caja al contenedor
+            cajasContainer.appendChild(newBox);
+
+            // Limpiar el input
+            spaceNameInput.value = "";
+            });
+
+            // Función para enfocar el campo de entrada
+             function focusSpaceNameInput() {
+                spaceNameInput.focus();
+            }
+
+            // Abrir el modal al hacer clic en el botón "Agregar"
+            openModalBtn.addEventListener("click", function() {
+                modal.style.display = "block";
+                focusSpaceNameInput();
+            });
+            
+            
+        });
+
+            //funcion dl boton de seleccioanr logo
+        document.addEventListener("DOMContentLoaded", function () {
+            const logoInput = document.getElementById("logoInput");
+            const logoImage = document.getElementById("logoImage");
+
+            logoInput.addEventListener("change", function () {
+            const file = logoInput.files[0];
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+                    logoImage.src = e.target.result;
+                    logoImage.style.display = "block";
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+             });
+        });
+
+            // Obtener referencias a los elementos del DOM
+            const modal = document.getElementById("myModal");
+            const openModalBtn = document.getElementById("openModal");
+            const closeModalBtn = document.getElementsByClassName("close")[0];
+            const cancelBtn = document.getElementById("cancel");
+            const spaceForm = document.getElementById("spaceForm");
+            const addSpaceBtn = document.getElementById("addSpace");
+            const spaceNameInput = document.getElementById("spaceName");
+            const cajasContainer = document.getElementById("cajas-container");
+           
+
+            // Función para habilitar o deshabilitar el botón "Agregar" según el contenido del campo
+            function toggleAddButton() {
+                if (spaceNameInput.value.trim() !== "") {
+                    addSpaceBtn.disabled = false;
+                } else {
+                    addSpaceBtn.disabled = true;
+                }
+            }
+
+            // Escuchar los cambios en el campo de entrada
+            spaceNameInput.addEventListener("input", toggleAddButton);
+
+            // Cuando se abre el modal, asegurarse de que el botón "Agregar" esté deshabilitado inicialmente
+            openModalBtn.addEventListener("click", function() {
+                modal.style.display = "block";
+                spaceNameInput.value = ""; // Limpiar el campo
+                toggleAddButton(); // Llamar a la función para asegurarse de que el botón esté en el estado correcto
+                focusSpaceNameInput(); // Enfocar el campo de entrada
+            });
+
+
+            // Cerrar el modal al hacer clic en la "x" o en el botón "Cancelar"
+            closeModalBtn.addEventListener("click", function() {
+                modal.style.display = "none";
+            });
+
+            cancelBtn.addEventListener("click", function() {
+                modal.style.display = "none";
+            });
+
+            // Cerrar el modal si el usuario hace clic fuera de él
+            window.addEventListener("click", function(event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+
+            // Capturar el envío del formulario
+            spaceForm.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevenir el envío del formulario (por defecto)
+                
+                // Aquí se agrega código para procesar el formulario, por ejemplo:
+                const spaceName = document.getElementById("spaceName").value;
+                console.log("Nombre del Espacio:", spaceName);
+                
+                // Cerrar el modal después de procesar el formulario
+                modal.style.display = "none";
+            });
+
+            
+            
+
+    </script>
+
+    <!-- JScript para abrir y cerrar el modal -->
+    <script src="script.js"></script>
+</body>
+</html>

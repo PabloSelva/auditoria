@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asignación de Tareas</title>
+  <link rel="stylesheet" href="../css/viewT.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="sidebar">
+      <h1>Miembros de Grupo</h1>
+    </div>
+
+    <div class="container">
+      <h1>Asignación de Tareas</h1>
+
+      <div class="task-section">
+        <h2>Agregar Nueva Tarea</h2>
+        <input type="text" id="task-title" placeholder="Título de la tarea">
+        <textarea id="task-instructions" placeholder="Instrucciones de la tarea"></textarea>
+        <h2>Fecha de vencimiento</h2>
+        <input type="date" id="task-due-date">
+      </div>
+
+      <div class="task-section">
+        <h2>Adjuntar Archivos</h2>
+        <input type="file" id="file-upload" accept=".pdf, .jpg, .jpeg, .png, .doc, .docx">
+        <h2>Seleccione a un miembro</h2>
+        <select id="assignee">
+          <option value="">Seleccionar Persona</option>
+          <option value="Persona1">Persona 1</option>
+          <option value="Persona2">Persona 2</option>
+          <option value="Persona3">Persona 3</option>
+        </select>
+      </div>
+
+      <button class="btnAgregarTarea"  onclick="addTask()">Agregar Tarea</button>
+      
+      <a href="../views/grupos.html"><button class="btnSalir">Cancelar</button></a>
+    </div>
+  </div>
+
+  <div id="task-list">
+    <!-- Aquí se mostrarán las tareas -->
+  </div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

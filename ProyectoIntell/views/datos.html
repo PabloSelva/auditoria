@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página en Blanco</title>
+    <link rel="stylesheet" href="../css/stylesd.css"> 
+
+</head>
+<body>
+    <div class="decoracion"></div>
+    <div class="decoracion2"></div>
+    <div class="decoracion3"></div>
+    <header>
+    
+    </header>
+
+    <main>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+
+                <h2>Información de tu Empresa</h2>
+                <form id="companyForm">
+                    <label for="companyName">Nombre de la Empresa:</label>
+                    <input type="text" id="companyName" class="typetxt">
+        
+                    <label for="companyType">Giro de tu Empresa:</label>
+                    <input type="text" id="companyType" class="typetxt" required>
+        
+                    <label for="companyDescription">Descripción:</label>
+                    <textarea id="companyDescription" class="typetxt" rows="4" required></textarea>
+        
+                    <button type="submit" id="saveInfo">Guardar Información</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+
+    <script>
+        // JScript para abrir y cerrar el modal del formulario
+        const modal = document.getElementById("myModal");
+        const saveInfoButton = document.getElementById("saveInfo");
+
+        saveInfoButton.addEventListener("click", function () {
+            // Obtén el nombre de la empresa desde el campo de entrada
+            const companyName = document.getElementById("companyName").value;
+
+            // Guarda el nombre en localStorage
+            localStorage.setItem("companyName", companyName);
+
+            // Cierra el modal
+            modal.style.display = "none";
+
+             // Redirige a la página grupos.html
+            window.location.href = "grupos.html";
+        });
+    </script>
+
+    <footer>
+        
+    </footer>
+</body>
+</html>

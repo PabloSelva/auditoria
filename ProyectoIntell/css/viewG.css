@@ -233,6 +233,25 @@ body {
     font-weight: bold; /* Hace que el texto sea negrita (opcional) */
 }
 
+/* Estilo para el botón de edición */
+.caja .menu-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    color: #000; /* Cambia el color del botón de tres puntos */
+    padding: 5px; /* Espaciado dentro del botón de edición */
+}
+
+/* Mostrar el botón de edición al pasar el cursor sobre la caja */
+.caja:hover .menu-button {
+    display:block;
+}
+
 /* Estilo para las cajas cuando el cursor está encima */
 .caja:hover {
     background-color: #2f6baf; /* Cambia el color de fondo cuando el cursor está encima a un color deseado, en este caso, naranja */
@@ -291,4 +310,107 @@ body {
     }
 }
 
+/* Estilo para el menú de contexto */
+.context-menu {
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+    min-width: 150px; /* Ancho mínimo del menú */
+}
 
+/* Estilo para las opciones del menú */
+.context-menu div {
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s; /* Agrega una transición al fondo de las opciones */
+}
+
+/* Cambia el color de fondo de las opciones al pasar el cursor sobre ellas */
+.context-menu div:hover {
+    background-color: #f2f2f2;
+}
+
+.bn632-hover {
+    width: 160px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  
+  .bn632-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  
+  .bn632-hover:focus {
+    outline: none;
+  }
+  
+  .bn632-hover.bn22 {
+    background-image: linear-gradient(
+      to right,
+      #0ba360,
+      #3cba92,
+      #30dd8a,
+      #2bb673
+    );
+    box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+  }
+
+  .bn632-hover {
+    width: 160px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  
+  .bn632-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  
+  .bn632-hover:focus {
+    outline: none;
+  }
+  
+  .bn632-hover.bn26 {
+    background-image: linear-gradient(
+      to right,
+      #25aae1,
+      #4481eb,
+      #04befe,
+      #3f86ed
+    );
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+  }
